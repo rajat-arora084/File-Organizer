@@ -112,11 +112,11 @@ class File_organizer():
                     for key, val in self.get_dict().items():
                          
                         if ext in val:
-                            shutil.move(item_full_path, self.get_path() + key )
+                            shutil.move(item_full_path, self.get_path() + key + '/' + item )
                             extension_found = True
                             break
                     if not extension_found:
-                        shutil.move(item_full_path, self.get_path() + 'others')
+                        shutil.move(item_full_path, self.get_path() + 'others' + '/' + item)
         
         except Exception as err:
             print 'Error occured during moving the file. ', err.message
@@ -126,8 +126,8 @@ path = 'D://'
 if os.path.isdir(path):
     print 'yes'
     ob = File_organizer(path)
-    #ob.arrange_items()
-    ob.add_extension_type('Codes', '.py')
-    print ob.get_dict()
-    ob.add_extension_type('Faltu', '.cfg')
-    print ob.get_dict()
+    ob.arrange_items()
+#     ob.add_extension_type('Codes', '.py')
+#     print ob.get_dict()
+#     ob.add_extension_type('Faltu', '.cfg')
+#     print ob.get_dict()
